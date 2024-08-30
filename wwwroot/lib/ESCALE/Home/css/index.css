@@ -6,7 +6,7 @@ html {
   padding: 0;
   min-height: 100vh;
   /* min-height: 100vh; 是一個 CSS 屬性，用於設置元素的最小高度為視窗高度的 100%。這意味著無論視窗的大小如何，該元素的高度至少會與視窗的高度相同。這在確保背景影片或其他元素能夠覆蓋整個視窗高度時非常有用。 */
-  overflow: hidden; /* 隐藏溢出内容 */
+  /*overflow: hidden; /* 隐藏溢出内容 */
 }
 .con {
   max-width: 100%;
@@ -14,9 +14,7 @@ html {
   margin: 0 auto;
   background-color: rgba(0, 0, 0, 0.3);
 }
-.nav-link a{
-color: #110058;
-}
+
 .con a {
   text-decoration: none;
   color: #fff;
@@ -175,15 +173,16 @@ iframe {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
   width: 300px;
+
   margin: 10px; /* 卡片的外邊距 */
   padding: 20px;
-  text-align: center;
-  position: relative;
+
+  position: relative; /* 使卡片固定在容器上 */
 }
 
 .card:hover {
   transform: scale(1.05); /* 鼠標懸停時放大卡片 */
-
+  height: auto;
   z-index: 1;
   box-shadow: 0 0px 16px rgba(111, 111, 212, 0.5);
   background-color: #ccffd7;
@@ -209,35 +208,43 @@ iframe {
 
 /* 卡片内文本样式 */
 .card p {
+  height: 200px;
+  text-align: left; /* 文本靠左對齊 */
   font-size: 16px;
   color: #ffffff;
   margin-top: 10px;
   line-height: 1.6;
-  font-weight: bold;
+  font-weight: bold; /* 文本加粗 */
   /* opacity: 0.5; */
   opacity: 0;
 }
 
 /* 按钮容器样式 */
 .button-container {
-  position: fixed;
-  bottom: -80px;
-  left: 50%;
+  width: 300px;
+  text-align: center;
+  position: fixed; /* 使按钮固定在容器上 */
+  /*bottom: -80px; /* 在容器下方添加外边距 */
+  /*left: 50%;
   transform: translate(-50%); /* 使按钮水平居中 */
-  z-index: -1;
-  margin-top: 3px; /* 在按钮容器顶部添加外边距 */
+  z-index: 1;
+  /*margin-top: 3px; /* 在按钮容器顶部添加外边距 */
+  /*position: relative; /* 使卡片固定在容器上 */
 }
 
 /* 按钮样式 */
 .button {
-  width: 200px;
+  width: 300px;
   background-color: #50d3ac;
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 5px; /* 圓角 */
   font-size: 18px; /* 字體大小 */
-  cursor: pointer;
+  cursor: pointer; /* 滑鼠指標樣式 */
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
 }
 
 /* .button:hover {
@@ -246,7 +253,7 @@ iframe {
 } */
 
 .button:focus {
-  background-color: #0056b3;
+  background-color: #000000;
 }
 
 .button:hover + #card-c {

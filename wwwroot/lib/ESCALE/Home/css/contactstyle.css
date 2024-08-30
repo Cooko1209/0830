@@ -1,5 +1,114 @@
 /* 內容 */
+/* 卡片容器样式 */
+.card-container {
+  display: flex; /* 以主軸為垂直軸排列元素 */
+  justify-content: space-around; /* 在主軸上均勻分配子元素的空間 */
+  padding-left: 10%;
+  padding-right: 10%;
+  flex-wrap: wrap; /* 允許子元素換行 */
+}
 
+/* 卡片样式 */
+.card {
+  /* display: none; 初始狀態隱藏 */
+  border: none; /* 無邊框 */
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+  width: 90%;
+  margin: 10px; /* 卡片的外邊距 */
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.card:hover {
+  transform: scale(1.05); /* 鼠標懸停時放大卡片 */
+
+  z-index: 1;
+  box-shadow: 0 0px 16px rgba(111, 111, 212, 0.5);
+  background-color: #ccffd7;
+  transition: all 0.3s ease-in-out; /* 平滑過渡效果 */
+}
+
+/* 卡片内圖片样式 */
+.card img {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  opacity: 0.3; /* 设置图片透明度为0.3，使其看起来更透明 */
+  background: rgba(255, 255, 255, 0); /* 半透明背景 */
+}
+
+.card:hover img {
+  opacity: 1;
+}
+.card:hover p li {
+  opacity: 1;
+  color: #000;
+}
+
+/* 卡片内文本样式 */
+.card p li {
+  font-size: 16px;
+  color: #ffffff;
+  margin-top: 10px;
+  line-height: 1.6;
+  font-weight: bold;
+  /* opacity: 0.5; */
+  opacity: 0;
+  justify-content: left;
+}
+
+/* 按钮容器样式 */
+.button-container {
+  width: 300px;
+  text-align: center;
+  position: fixed;
+  bottom: -80px;
+  left: 50%;
+  transform: translate(-50%); /* 使按钮水平居中 */
+  z-index: -1;
+  margin-top: 3px; /* 在按钮容器顶部添加外边距 */
+}
+
+/* 按钮样式 */
+.button {
+  width: 300px;
+  background-color: #50d3ac;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px; /* 圓角 */
+  font-size: 18px; /* 字體大小 */
+  cursor: pointer;
+}
+
+/* .button:hover {
+  z-index: 1;
+  display: block;
+} */
+
+.button:focus {
+  background-color: #0056b3;
+}
+
+.button:hover + #card-c {
+  transform: scale(1.05); /* 鼠標懸停時放大卡片 */
+  color: #a5caff;
+  background: linear-gradient(45deg, #d7c0eb, #e0e4fd);
+  /* -webkit-background-clip: text; */
+  -webkit-text-fill-color: transparent;
+
+  .card:hover img {
+    opacity: 1;
+  }
+  .card:hover p {
+    opacity: 1;
+    color: #000;
+  }
+}
 /* banner */
 #container .banner {
   background-image: url(../images/banner1-1.jpg);

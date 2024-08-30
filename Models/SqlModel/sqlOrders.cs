@@ -119,7 +119,44 @@ VALUES
         parm4.Add("SheetNo", str_order_no);
         dpr.Execute(str_query, parm4);
       }
+      //產生訂單明細
+      CreateOrderDetail(str_order_no);
       return str_order_no;
+    }
+    /// <summary>
+    /// 產生訂單明細
+    /// </summary>
+    /// <param name="orderNo">訂單編號</param>
+    public void CreateOrderDetail(string orderNo)
+    {
+      using var carts = new z_sqlCarts();
+      var data = carts.GetDataList();
+      if (data != null && data.Count > 0)
+      {
+        string str_query = @"
+INSERT INTO OrderDetails
+(ParentNo,VendorNo,CategoryNo,ProdNo,ProdName,ProdSpec
+,OrderPrice,OrderQty,OrderAmount,Remark)
+VALUES
+(@ParentNo,@VendorNo,@CategoryNo,@ProdNo,@ProdName,@ProdSpec
+,@OrderPrice,@OrderQty,@OrderAmount,@Remark)
+";
+        foreach (var item in data)
+        {
+          DynamicParameters parm = new DynamicParameters();
+          parm.Add("ParentNo", orderNo);
+          parm.Add("VendorNo", "");
+          parm.Add("CategoryNo", "");
+          parm.Add("ProdNo", item.ProdNo);
+          parm.Add("ProdName", item.ProdName);
+          parm.Add("ProdSpec", item.ProdSpec);
+          parm.Add("OrderPrice", item.OrderPrice);
+          parm.Add("OrderQty", item.OrderQty);
+          parm.Add("OrderAmount", item.OrderAmount);
+          parm.Add("Remark", "");
+          dpr.Execute(str_query, parm);
+        }
+      }
     }
     /// <summary>
     /// 取得會員訂單
